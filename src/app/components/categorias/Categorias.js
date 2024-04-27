@@ -27,13 +27,13 @@ export default async function DisplayCategorias() {
   }
   function Categoria({ note }) {
     const { id, nombreCat, imagen, created } = note || {};
-    const baseUrl = 'http://127.0.0.1:8090/api/collections/categoria/';
+    const baseUrl = 'http://127.0.0.1:8090/api/files/categoria/';
     const imageUrl = imagen;
     return (
       React.createElement(Link, { href: `/notes/${id}` },
         React.createElement('div', { className: styles.note },
           React.createElement('h2', null, nombreCat),
-          React.createElement('img', { src: baseUrl + imageUrl, alt: "imagen" }),
+          React.createElement('img', { src: baseUrl + id+ '/' +imageUrl, alt: "imagen" }),
           React.createElement('p', null, created)
         )
       )
