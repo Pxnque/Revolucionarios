@@ -10,12 +10,12 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-white">
+      <nav className="bg-white m-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <a href="/" className="text-black text-4xl">
+              <a href="/" className="text-black text-2xl md:text-4xl lg:text-6xl">
                 Los Revolucionarios
               </a>
             </div>
@@ -82,7 +82,7 @@ const Navbar = () => {
           </div>
           
         </div>
-        <div className="w-10/12 mx-auto border-b border-black"></div>
+        <div className="w-auto mx-auto border-b border-black m-4"></div>
       </div>
       {isClick && 
       (
