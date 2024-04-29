@@ -35,12 +35,12 @@ export default function Home() {
   return (
    <main>
     <Navbar/>
-    <div className="max-w-[1200px] h-[580px] m-auto py-4 px-4 relative group">
+    <div className="max-w-[1200px] h-[480px] m-auto py-4 px-4 relative group ">
       <div style={{ 
           backgroundImage: `url(${slides[currentSlide]})`, // Aquí se usa la sintaxis de template strings
         }}
  className="w-full h-full rounded-2xl bg-center bg-cover duration-500"> 
-  {}
+  
   <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black text-white cursor-pointer bg-opacity-50">
     <BsChevronCompactLeft size={30} onClick={prevSlide}/>
   </div>
@@ -66,19 +66,19 @@ export default function Home() {
   </div>
     </div>
 
-  <div className="flex m-8">
-  <div className="w-1/2 h-full m-4">
-  <h2 className="relative text-center text-xl font-bold">
+    <div className="flex m-2 items-center ">
+  <div className="w-full h-full m-4 text-center p-5 sm:w-full sm:p-1 md:w-1/2 md:h-1/2">
+    <h2 className="text-center text-xl font-bold lg:text-4xl">
       Sabor, sazón
     </h2>
-    <p1 className="relative text-center ">
-    ¡Bienvenidos  a Los Revolucionarios, donde la historia cobra vida y los sabores mexicanos te transportan a tiempos de aventura y tradición! En nuestro hogar, la hospitalidad es la esencia y la comida es el corazón
-    </p1>
+    <p className="text-center lg:text-3xl sm:text-xl mx-4">
+      ¡Bienvenidos a Los Revolucionarios, donde la historia cobra vida y los sabores mexicanos te transportan a tiempos de aventura y tradición! En nuestro hogar, la hospitalidad es la esencia y la comida es el corazón. Únete a la revolución del sabor y del entretenimiento con nosotros. ¡Tenemos Eventos en Vivo todos los días para el disfrute de toda la familia!
+    </p>
   </div>
-  <div className="w-1/2 h-full">
-  <Image src="/1714104244091.jpg" alt="Imagen" width={500} height={300} layout="responsive" className="rounded-lg">
-    </Image>
+  <div className="p-10 hidden sm:block">
+    <Image src="/1714104244091.jpg" alt="Imagen" width={380} height={280} className="rounded-lg max-w[480px] max-h[380px]" />
   </div>
+
 </div>
 
 
