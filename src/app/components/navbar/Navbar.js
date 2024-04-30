@@ -24,25 +24,25 @@ const Navbar = () => {
             <div className="ml-4 flex items-center space-x-4">
               <a
                 href="/"
-                className="text-black hover:bg-black hover:text-white rounded-lg p-2 text-xl"
+                className="text-black hover:bg-black hover:text-white rounded-lg p-2 text-xl transform transition duration-300 hover:scale-125"
               >
                 Inicio
               </a>
               <a
                 href="/"
-                className="text-black hover:bg-black hover:text-white rounded-lg p-2 text-xl"
+                className="text-black hover:bg-black hover:text-white rounded-lg p-2 text-xl transform transition duration-300 hover:scale-125"
               >
                 Menú
               </a>
               <a
                 href="/"
-                className="text-black hover:bg-black hover:text-white rounded-lg p-2 text-xl"
+                className="text-black hover:bg-black hover:text-white rounded-lg p-2 text-xl transform transition duration-300 hover:scale-125"
               >
                 Nosotros
               </a>
               <a
                 href="/"
-                className="text-black hover:bg-black hover:text-white rounded-lg p-2 text-xl"
+                className="text-black hover:bg-black hover:text-white rounded-lg p-2 text-xl transform transition duration-300 hover:scale-125"
               >
                 Eventos
               </a>
