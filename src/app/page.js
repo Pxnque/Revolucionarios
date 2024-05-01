@@ -11,6 +11,7 @@ const slides = [
 "/1714104244442.jpg",
 "/1714104245112.jpg"
 ]
+import Categoria from "./components/categorias/Categorias";
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
