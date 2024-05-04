@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Categorias.module.css';
 import Link from 'next/link';
 
-async function getCategorias() {
+/*async function getCategorias() {
     // const db = new PocketBase('http://127.0.0.1:8090');
     // const result = await db.records.getList('notes');
     const res = await fetch('http://127.0.0.1:8090/api/collections/categoria/records?page=1&perPage=30', { cache: 'no-store' });
@@ -38,5 +38,45 @@ export default async function DisplayCategorias() {
         )
       )
     );
+  }*/
+  
+
+  
+  // JSX
+  async function getCategorias() {
+      const res = await fetch('http://127.0.0.1:8090/api/collections/categoria/records?page=1&perPage=30', { cache: 'no-store' });
+      const data = await res.json();
+      return data?.items || []; 
   }
+  
+  export default async function DisplayCategorias() {
+      const categorias = await getCategorias();
+    
+      return (
+          <div>
+              <div className="flex items-center justify-center flex-wrap max-w-screen-xl">
+                  {categorias?.map((cat) => {
+                      return <Categoria key={cat.id} note={cat} />;
+                  })}
+              </div>
+          </div>
+      );
+  }
+  
+  function Categoria({ note }) {
+      const { id, nombreCat, imagen, created } = note || {};
+      const baseUrl = 'http://127.0.0.1:8090/api/files/categoria/';
+      const imageUrl = imagen;
+      return (
+          <Link href={`/notes/${id}`}>
+              <div className="h-auto w-36 m-2 bg-black  rounded-md md:w-64">
+                  
+                  <img src={baseUrl + id + '/' + imageUrl} alt="imagen" className="w-full rounded-t-md " />
+                  <h2 className="text-lg text-center p-1 text-white md:text-2xl">{nombreCat}</h2>
+              </div>
+          </Link>
+      );
+  }
+  
+
   
