@@ -68,7 +68,7 @@ export default async function DisplayCategorias() {
       const baseUrl = 'http://127.0.0.1:8090/api/files/categoria/';
       const imageUrl = imagen;
       return (
-          <Link href={`/menu/${nombreCat}`}>
+          <Link href={`/categorias/${id}`}>
               <div className="h-auto w-36 m-2 bg-black  rounded-md md:w-64">
                   
                   <img src={baseUrl + id + '/' + imageUrl} alt="imagen" className="w-full rounded-t-md " />

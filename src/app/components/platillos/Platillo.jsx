@@ -1,13 +1,11 @@
  // JSX
 
 
- async function getPlatillos(idCategoria) {
-    
-
+ async function getPlatillos() {
     const url = `http://127.0.0.1:8090/api/collections/comida/records?filter=idCategoria='a803u4t6stalnhc'&page=1&perPage=30`;
     const res = await fetch(url, { cache: 'no-store' });
     const data = await res.json();
-    console.log(idCategoria);
+    
     return data?.items || [];
 
   }

@@ -16,7 +16,7 @@ const page = () => {
 
         </DisplayCategorias>
         </div>
-        <Platillo/>
+        
         <Footer/>
     </div>
   )
