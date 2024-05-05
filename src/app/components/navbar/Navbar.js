@@ -11,7 +11,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-white m-6">
+      <nav className="bg-white m-2">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
@@ -31,7 +31,7 @@ const Navbar = () => {
               </a>
               <a
                 href="/menu"
-                className="text-black hover:bg-black hover:text-white rounded-lg p-2 text-xl transform transition duration-300 hover:scale-125"
+                className="bg-black text-white hover:bg-white hover:text-black border hover:border-black rounded-lg p-2 text-xl transform transition duration-300 hover:scale-125 "
               >
                 Menú
               </a>
@@ -39,7 +39,7 @@ const Navbar = () => {
                 Nosotros
               </Link> 
               <a
-                href="/"
+                href="/eventos"
                 className="text-black hover:bg-black hover:text-white rounded-lg p-2 text-xl transform transition duration-300 hover:scale-125"
               >
                 Eventos
@@ -80,7 +80,7 @@ const Navbar = () => {
           </div>
           
         </div>
-        <div className="w-auto mx-auto border-b border-black m-4"></div>
+        <div className="w-auto border border-black mx-4"></div>
       </div>
       {isClick && 
       (
@@ -94,7 +94,7 @@ const Navbar = () => {
               </a>
               <a
                 href="/menu"
-                className="text-black block hover:bg-black hover:text-white rounded-lg p-2 text-lg"
+                className="text-black block hover:bg-black hover:text-black rounded-lg p-2 text-lg "
               >
                 Menú
               </a>
@@ -105,7 +105,7 @@ const Navbar = () => {
                 Nosotros
               </a>
               <a
-                href="/"
+                href="/eventos"
                 className="text-black block hover:bg-black hover:text-white rounded-lg p-2 text-lg"
               >
                 Eventos
