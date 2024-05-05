@@ -1,10 +1,11 @@
+import Footer from "../components/footer/Footer"
 import Navbar from "../components/navbar/Navbar"
 const page = () => {
     return (
       
       <div>
           <Navbar/> 
-        <div class="grid gap-4 grid-cols-3 grid-rows-3">
+        <div class="flex items-center justify-center h-[60vh]">
             <div class="bg-stone-400 p-8 rounded-lg shadow-md w-96 ">
             <h2 class="text-center text-2xl font-bold text-gray-800 mb-6">LOGIN</h2>
             <form action="/login" method="post">
@@ -22,6 +23,7 @@ const page = () => {
             </form>
             </div> 
         </div>
+        <Footer/>
       </div>
        
     )
