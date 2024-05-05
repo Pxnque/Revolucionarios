@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './Categorias.module.css';
 import Link from 'next/link';
+import Image from 'next/image';
+
 
 /*async function getCategorias() {
     // const db = new PocketBase('http://127.0.0.1:8090');
@@ -69,9 +71,8 @@ export default async function DisplayCategorias() {
       const imageUrl = imagen;
       return (
           <Link href={`/notes/${id}`}>
-              <div className="h-auto w-36 m-2 bg-black  rounded-md md:w-64">
-                  
-                  <img src={baseUrl + id + '/' + imageUrl} alt="imagen" className="w-full rounded-t-md " />
+              <div className="h-56 w-36 m-2 bg-black  rounded-md md:w-64 sm:w-48 sm:h-64">  
+                  <img src={baseUrl + id + '/' + imageUrl} alt="imagen" className="w-full rounded-t-md h-5/6" />
                   <h2 className="text-lg text-center p-1 text-white md:text-2xl">{nombreCat}</h2>
               </div>
           </Link>

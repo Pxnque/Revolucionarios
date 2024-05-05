@@ -99,7 +99,7 @@ const Navbar = () => {
                 Menú
               </a>
               <a
-                href="/"
+                href="/nosotros"
                 className="text-black block hover:bg-black hover:text-white rounded-lg p-2 text-lg"
               >
                 Nosotros
