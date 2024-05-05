@@ -1,13 +1,14 @@
-async function getPlatillos(categoriaId) {
-   
-    const url = `http://127.0.0.1:8090/api/collections/comida/records?filter=idCategoria=${categoriaId}&page=1&perPage=30`;
-    const res = await fetch(url, { next: {revalidate :10}, });
+async function getPlatillos(catID) {
+    const url = `http://127.0.0.1:8090/api/collections/comida/records?filter=idCategoria='${catID}'&page=1&perPage=30`;
+    const res = await fetch(url, { cache: 'no-store' });
     const data = await res.json();
-    
+    console.log(data);
     return data?.items || [];
 
   }
-  export default async function DisplayPlatillos() {
+  
+
+export default async function DisplayPlatillos() {
     const platillos = await getPlatillos();
   
     return (
