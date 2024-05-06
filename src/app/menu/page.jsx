@@ -5,6 +5,7 @@ import Navbar from '../components/navbar/Navbar'
 import Footer from '../components/footer/Footer'
 import LoadingSpinner from '../components/loadingSpinnner/LoadingSpinner'
 import { useState, useEffect } from 'react';
+import DisplayPlatillos from '../components/platillo/Platillo'
 
 
 const page = () => {
@@ -20,6 +21,7 @@ const page = () => {
 
         </DisplayCategorias>
         </div>
+        
         <Footer/>
         
     </div>
