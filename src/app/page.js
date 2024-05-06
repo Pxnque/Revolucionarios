@@ -36,7 +36,7 @@ export default function Home() {
   return (
    <main className="">
     <Navbar/>
-    <div className="max-w-[1200px] h-[480px] m-auto py-4 px-4 relative group ">
+    <div className="max-w-[1200px] h-[480px] m-auto py-4 px-4 relative group">
       <div style={{ 
           backgroundImage: `url(${slides[currentSlide]})`, // Aquí se usa la sintaxis de template strings
         }}
@@ -45,10 +45,10 @@ export default function Home() {
   <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black text-white cursor-pointer bg-opacity-50 transform transition duration-300 hover:scale-125">
     <BsChevronCompactLeft size={30} onClick={prevSlide}/>
   </div>
-  <div className="hidden group-hover:block absolute top-1/2 left-1/2 transform -translate-x-0 translate-y-[-50%] text-2xl rounded-md p-2 bg-black bg-opacity-50 text-white cursor-pointer  transform transition duration-300 hover:scale-125 justify-center">
-        <button>
-          Menú
-        </button>
+  <div className="hidden group-hover:block absolute top-[50%] left-[50%] -translate-x-0 translate-y-[-50%] text-sm rounded-md p-2 bg-black bg-opacity-50 text-white cursor-pointer  transform transition duration-300 hover:scale-125 md:text-2xl">
+  <a href="/menu">
+  Menú
+</a>
   </div>
   <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black bg-opacity-50 text-white cursor-pointer transform transition duration-300 hover:scale-125">
     <BsChevronCompactRight size={30} onClick={nextSlide}/>
@@ -67,7 +67,7 @@ export default function Home() {
   </div>
     </div>
 
-    <div className="flex items-center justify-center m-2">
+    <div className="flex items-center justify-center m-2 ">
   <div className="w-full h-full m-4 text-center p-5 md:w-1/2 md:h-1/2">
     <h2 className="text-center text-xl font-bold lg:text-4xl">
       Sabor, sazón
