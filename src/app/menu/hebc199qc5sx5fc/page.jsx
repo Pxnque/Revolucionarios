@@ -2,9 +2,9 @@
 import React from 'react'
 
 
-import DisplayPlatillos from '@/app/components/platillo/Platillo'
 import Navbar from '@/app/components/navbar/Navbar'
 import Footer from '@/app/components/footer/Footer'
+import DisplayEspecialidades from '@/app/components/especialidades/Especialidades'
 
 
 
@@ -18,7 +18,7 @@ const page = () => {
 
         <div>
            
-        <DisplayPlatillos/>
+        <DisplayEspecialidades/>
 
         </div>
         <Footer/>

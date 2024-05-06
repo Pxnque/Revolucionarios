@@ -2,9 +2,11 @@
 import React from 'react'
 
 
-import DisplayPlatillos from '@/app/components/platillo/Platillo'
 import Navbar from '@/app/components/navbar/Navbar'
 import Footer from '@/app/components/footer/Footer'
+import DisplayBebidas from '@/app/components/bebidas/Bebidas'
+
+
 
 
 
@@ -18,7 +20,7 @@ const page = () => {
 
         <div>
            
-        <DisplayPlatillos/>
+        <DisplayBebidas/>
 
         </div>
         <Footer/>
