@@ -16,7 +16,7 @@ const page = () => {
         </div>
          <div className="flex flex-col md:flex-row md:items-center">
     <div className="md:w-4/6 flex items-center justify-center">
-    <Image src="/raul-najera-OsTJNX83lC0-unsplash - copia.jpg" alt="imagen" width={280} height={180} className="md:w-full md:mx-12 "></Image>
+    <Image src="/raul-najera-OsTJNX83lC0-unsplash - copia.jpg" alt="imagen" width={280} height={180} className="md:w-2/3 md:mx-12 rounded-md"></Image>
     </div>
     <div className="md:w-1/2 my-4 mx-6 flex-col items-center justify-center">
         <h1 className="font-bold text-xl md:text-2xl text-center">
@@ -44,7 +44,7 @@ const page = () => {
     </h2>
     </div>
     <div className="md:w-4/6 flex items-center justify-center">
-    <Image src="/raul-najera-OsTJNX83lC0-unsplash - copia.jpg" alt="imagen" width={280} height={180} className="md:w-full md:mx-12 "></Image>
+    <Image src="/raul-najera-OsTJNX83lC0-unsplash - copia.jpg" alt="imagen" width={280} height={180} className="md:w-2/3 md:mx-12 rounded-md"></Image>
     </div>
    
     </div>
