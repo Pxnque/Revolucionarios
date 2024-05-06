@@ -31,14 +31,14 @@ function Botanas({ note }) {
     //const imageUrl = imagen;
     return (
         
-            <div className="container mx-auto px-4">
-                
-                <h1 className="text-xl text-black">{nombre}</h1>
-                
-                <p className="text-base">{ingredientes}</p>
-                <p className="font-extralight">{tiempoPrep}</p>
+        <div className="container mx-auto px-4 md:mx-52">
 
-            </div>
+        <h1 className="text-xl text-red-800 font-bold ">{nombre}</h1>
+
+        <p className="text-base ">{ingredientes}</p>
+        <p className="font-extralight">{tiempoPrep}</p>
+
+    </div>
         
     );
 }
