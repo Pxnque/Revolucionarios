@@ -67,7 +67,7 @@ export default function Home() {
   </div>
     </div>
 
-    <div className="flex m-2">
+    <div className="flex items-center justify-center m-2">
   <div className="w-full h-full m-4 text-center p-5 md:w-1/2 md:h-1/2">
     <h2 className="text-center text-xl font-bold lg:text-4xl">
       Sabor, sazón
