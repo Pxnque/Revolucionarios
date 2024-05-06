@@ -2,7 +2,7 @@
 
 
  async function getPlatillos() {
-    const url = `http://127.0.0.1:8090/api/collections/comida/records?filter=idCategoria='nowes2axjyqn96c'&page=1&perPage=30`;
+    const url = `http://127.0.0.1:8090/api/collections/comida/records?filter=idCategoria='2d2gzj8yp3s6dmz'&page=1&perPage=30`;
     const res = await fetch(url, { cache: 'no-store' });
     const data = await res.json();
     
@@ -25,7 +25,7 @@ export default async function DisplayEnsaladas() {
     );
 }
 
-function Ensalada({ note }) {
+function Ensaladas({ note }) {
     const { id, nombre, ingredientes, tiempoPrep } = note || {};
     //const baseUrl = 'http://127.0.0.1:8090/api/files/categoria/';
     //const imageUrl = imagen;
