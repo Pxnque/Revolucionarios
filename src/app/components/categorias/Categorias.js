@@ -46,7 +46,7 @@ export default async function DisplayCategorias() {
 
   
   // JSX
-  function getCategorias() {
+  /*function getCategorias() {
       const res =  fetch('http://127.0.0.1:8090/api/collections/categoria/records?page=1&perPage=30', { cache: 'no-store' });
       const data =  res.json();
       return data?.items || []; 
@@ -80,5 +80,5 @@ export default async function DisplayCategorias() {
       );
   }
   
-
+*/
   
