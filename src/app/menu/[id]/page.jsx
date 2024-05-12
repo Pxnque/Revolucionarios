@@ -4,22 +4,33 @@ import Navbar from "@/app/components/navbar/Navbar";
 import React, { useEffect, useState } from 'react'
 import { Suspense } from 'react';
 import { fetchData } from '@/app/fetchData';
+import { fetchDataP } from "@/app/fetchDataP";
 
 export default function platilloId ({ params }){
     const [data, setData] = useState(null);
-    const apiData = fetchData(`http://127.0.0.1:8090/api/collections/comida/records?filter=idCategoria='${params.id}'&page=1&perPage=30`);
+    const idComida = params.id;
+    console.log(idComida);
+    // Ensure the id is enclosed in encoded single quotes
+    const url = `http://127.0.0.1:8090/api/collections/comida/records?filter=idCategoria='${idComida}'`;
+
+    console.log(url); // To verify the URL is correct
+    const apiData = fetchDataP(url);
+    
     useEffect(() => {
-        try {
-            const fetchedData = apiData.read();
-            if (fetchedData && fetchedData.items) {
-                setData(fetchedData.items);
-            } else {
-                console.error('Data is not in expected format:', fetchedData);
-            }
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    }, []);
+        fetchDataP(url)
+            .then(data => {
+                console.log('Data received:', data);  // Log to verify data structure
+                if (data && data.items) {
+                    setData(data.items);  // Set state to the items array
+                } else {
+                    console.error('No items found in response');
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    }, [url]);
+    
     return(
         <>
             <Navbar/>
@@ -38,7 +49,7 @@ export default function platilloId ({ params }){
                     ))}
                 </ul>
             </Suspense>
-        </div>
+            </div>
             <Footer/>
         </>
     ); 
