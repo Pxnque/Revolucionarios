@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react'
 import { Suspense } from 'react';
 import { fetchData } from '@/app/fetchData';
