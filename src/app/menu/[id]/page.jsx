@@ -32,7 +32,7 @@ export default function platilloId ({ params }){
     }, [url]);
     
     return(
-        <>
+        <div>
             <Navbar/>
             <div className="flex items-center justify-center flex-wrap max-w-screen-xl">
             <Suspense fallback={<div>Loading...</div>}>
@@ -51,6 +51,6 @@ export default function platilloId ({ params }){
             </Suspense>
             </div>
             <Footer/>
-        </>
+        </div>
     ); 
 }
