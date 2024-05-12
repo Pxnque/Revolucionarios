@@ -6,20 +6,22 @@ import Footer from '../components/footer/Footer'
 import LoadingSpinner from '../components/loadingSpinnner/LoadingSpinner'
 import { useState, useEffect } from 'react';
 import DisplayPlatillos from '../components/platillo/Platillo'
+import NewCategoria from '../components/categorias2/NewCategoria'
 
 
 const page = () => {
  
+/*<DisplayCategorias>
 
+</DisplayCategorias>*/
   return (
       
       <div>
         <Navbar/>
-
+        <h1 className='text-6xl text-red-950 flex items-center justify-center'>Menu:</h1>
         <div className="flex items-center justify-center ">
-        <DisplayCategorias>
-
-        </DisplayCategorias>
+        
+        <NewCategoria/>
         </div>
         
         <Footer/>
