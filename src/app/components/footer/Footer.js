@@ -108,7 +108,7 @@ const Footer = () => {
           <button className="transform transition duration-300 hover:scale-125">Nosotros</button>
         </li>
         <li className="size-auto flex justify-center">
-        <Image src="REVOLUCIONARIOS-LOGO.svg" alt="Logo" width={120} height={60}  className="md:w-120"/>
+        <Image src="/REVOLUCIONARIOS-LOGO.svg" alt="Logo" width={120} height={60}  className="md:w-120"/>
         </li>
         <li className="size-auto text-center flex justify-center items-center text-2xl font-bold cursor-pointer transform transition duration-300 hover:scale-125">Aviso de privacidad</li>
         </ul>
