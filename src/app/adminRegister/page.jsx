@@ -2,7 +2,11 @@
 import React from 'react'
 import { useState, useEffect } from 'react'; 
 import { fetchData } from '@/app/fetchData';
+import PocketBase from 'pocketbase';
 
+const pb = new PocketBase('http://127.0.0.1:8090');
+var ingredientes = "";
+var tiempoPreparacion = "";
 
 const apiData = fetchData("http://127.0.0.1:8090/api/collections/categoria/records?fields=id,nombreCat,expand.relField.name");
 const apiDataComida = fetchData("http://127.0.0.1:8090/api/collections/comida/records?fields=id,nombre,ingredientes,tiempoPrep,expand.relField.name?page=1&perPage=200");
@@ -10,6 +14,11 @@ const apiDataComida = fetchData("http://127.0.0.1:8090/api/collections/comida/re
 const page = () => {
   const [data, setData] = useState(null);
   const [dataComida, setDataComida] = useState(null);
+  const [selectedComida, setSelectedComida] = useState({
+    nombre: '',
+    ingredientes: '',
+    tiempoPrep: ''
+  });
 
     useEffect(() => {
         try {
@@ -35,6 +44,17 @@ const page = () => {
         
     }, []);
 
+    const handleSelectChange = (event) => {
+      const selectedRecord = dataComida.find(record => record.nombre === event.target.value);
+      if (selectedRecord) {
+        setSelectedComida({
+          nombre: selectedRecord.nombre,
+          ingredientes: selectedRecord.ingredientes,
+          tiempoPrep: selectedRecord.tiempoPrep
+        });
+      }
+    };
+
     const renderOptionsCategorias = () => {
       return data?.map(record => (
           <option key={record.id} value={record.nombreCat}>{record.nombreCat}</option>
@@ -42,21 +62,27 @@ const page = () => {
   };
 
   const renderOptionsComidas = () => {
+    
     return dataComida?.map(record => (
       <option key={record.id} value={record.nombre}>{record.nombre}</option>
+      
     ));
+    
   };
  
   return (
         <>
           <div className="flex flex-col items-center justify-center my-4">
             <h1 className="font-bold text-3xl text-center mb-4 md:text-4xl">Editar Platillo</h1>
-            <select className=" w-1/2 md:w-1/3 px-4 py-2 border border-black rounded-md text-xl text-center font-bold h-full">
+            <select className=" w-1/2 md:w-1/3 px-4 py-2 border border-black rounded-md text-xl text-center font-bold h-full"
+            onChange={handleSelectChange}>
+            
             {renderOptionsComidas()}
       </select>
-      <textarea name="" id="" className="border border-black rounded-md m-4 w-1/2 md:w-1/3 px-4 py-2 text-xl "></textarea>
-      <input type="number" className="w-1/2 md:w-1/3 px-4 py-2 border border-black text-black rounded-sm mb-4" placeholder="Tiempo de preparación en min"/>
-      
+      <textarea name="" id="" className="border border-black rounded-md m-4 w-1/2 md:w-1/3 px-4 py-2 text-xl " value={selectedComida.ingredientes}></textarea>
+
+      <input type="text" className="w-1/2 md:w-1/3 px-4 py-2 border border-black text-black rounded-sm mb-4" placeholder="Tiempo de preparación en min" value={selectedComida.tiempoPrep} ></input>
+
     <button className="border border-black rounded-md w-1/2 md:w-1/3 px-4 py-2 hover:text-white hover:bg-red-700 font-bold text-xl">Aceptar</button>
       </div>
      
