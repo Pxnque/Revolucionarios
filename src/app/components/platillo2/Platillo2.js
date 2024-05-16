@@ -32,9 +32,8 @@ const Platillo2 = (props) => {
                     {data?.map((item) => (
                         <div className="container mx-auto px-4 md:mx-52">
 
-                        <h1 className="text-xl text-red-800 font-bold ">{item.nombre}</h1>
-                
-                        <p className="text-base ">{item.ingredientes}</p>
+                        <h1 className="text-red-800 font-bold md:text-3xl">{item.nombre}</h1>
+                        <p className="text-base">{item.ingredientes}</p>
                         <p className="font-extralight">{item.tiempoPrep}</p>
                 
                     </div>

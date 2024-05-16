@@ -23,24 +23,25 @@ const Navbar = () => {
           </div>
           <div className="hidden md:block">
             <div className="ml-4 flex items-center space-x-4">
-              <a
-                href="/"
-                className="text-black hover:bg-black hover:text-white rounded-lg p-2 text-xl transform transition duration-300 hover:scale-125"
-              >
-                Inicio
-              </a>
-              <a
+             <a
                 href="/menu"
-                className="bg-black text-white hover:bg-white hover:text-black border hover:border-black rounded-lg p-2 text-xl transform transition duration-300 hover:scale-125 "
+                className="bg-red-800 text-white hover:bg-white hover:text-black border hover:border-black rounded-lg p-2 text-xl transform transition duration-300 hover:scale-125 "
               >
                 Menú
               </a>
-              <Link href="/nosotros" className="text-black hover:bg-black hover:text-white rounded-lg p-2 text-xl transform transition duration-300 hover:scale-125">
+              <a
+                href="/"
+                className="text-black hover:bg-red-800 hover:text-white rounded-lg p-2 text-xl transform transition duration-300 hover:scale-125"
+              >
+                Inicio
+              </a>
+             
+              <Link href="/nosotros" className="text-black hover:bg-red-800 hover:text-white rounded-lg p-2 text-xl transform transition duration-300 hover:scale-125">
                 Nosotros
               </Link> 
               <a
                 href="/eventos"
-                className="text-black hover:bg-black hover:text-white rounded-lg p-2 text-xl transform transition duration-300 hover:scale-125"
+                className="text-black hover:bg-red-800 hover:text-white rounded-lg p-2 text-xl transform transition duration-300 hover:scale-125"
               >
                 Eventos
               </a>
@@ -94,7 +95,7 @@ const Navbar = () => {
               </a>
               <a
                 href="/menu"
-                className="text-black block hover:bg-black hover:text-black rounded-lg p-2 text-lg "
+                className="text-black block hover:bg-black hover:text-white rounded-lg p-2 text-lg "
               >
                 Menú
               </a>

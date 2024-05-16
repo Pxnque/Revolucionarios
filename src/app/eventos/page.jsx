@@ -22,7 +22,7 @@ const page = () => {
         <h1 className="font-bold text-xl md:text-2xl text-center">
             DEPORTES EN VIVO TODOS LOS DIAS
         </h1>
-    <p className="text-base md:text-2xl text-center">
+    <p className="text-base md:text-2xl text-center mr-10">
     Todos los dias podras disfrutar con nosotros de tus deportes favoritos en vivo, apoya a tu equipo favorito con uno de nuestros deliciosos platillos
     </p>
     </div>
