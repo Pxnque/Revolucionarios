@@ -28,7 +28,7 @@ function Platillo({ platillo }) {
     return (
         <div className="container mx-auto px-4 md:mx-52">
 
-        <h1 className="text-xl text-red-800 font-bold ">{nombre}</h1>
+        <h1 className="text-xl text-blue-800 font-bold ">{nombre}</h1>
 
         <p className="text-base ">{ingredientes}</p>
         <p className="font-extralight">{tiempoPrep}</p>
