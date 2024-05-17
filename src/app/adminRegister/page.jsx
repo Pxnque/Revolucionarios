@@ -9,7 +9,8 @@ const apiData = fetchData("http://127.0.0.1:8090/api/collections/categoria/recor
 //por medio de la api se manda a llamar el id, nombre, ingredientes y tiempo de preparacion de cada platillo de la tabla de comida. por pagina se llaman 200 platillos
 const apiDataComida = fetchData("http://127.0.0.1:8090/api/collections/comida/records?fields=id,nombre,ingredientes,tiempoPrep,expand.relField.name?page=1&perPage=200");
 var updateData =  ""; //variable que almacenara si se pudo editar el platillo
-var createData = ""; //variable que almacenara si se pudo crear el platillo
+var createData = "";
+var deleteData = ""; //variable que almacenara si se pudo crear el platillo
 async function update(data){ //funcion asyncrona que actualiza el platillo de la baser de datos
   try{
   
@@ -25,6 +26,22 @@ async function update(data){ //funcion asyncrona que actualiza el platillo de la
   }
 
 }
+async function borrar(data){ //funcion asyncrona que actualiza el platillo de la baser de datos
+  try{
+  
+    deleteData = await pb.collection('comida').delete(data.id); //actualiza el platillo, manda el id del platillo y su informacion
+    if (deleteData){//si el platillo fue editado con exito mostrara una alerta de confirmacion
+      alert("Platillo eliminado con exito");
+    }else{//si no se pudo editar mostrara la alerta de que hubo un problema
+      alert("Hubo un problema al eliminar el platillo");
+    }
+  }
+  catch (e){
+      console.log(e)
+  }
+
+}
+
 
 async function create(data){//funcion asyncrona que manda la informacion del nuevo platillo a la base de datos
   try{
@@ -43,6 +60,7 @@ async function create(data){//funcion asyncrona que manda la informacion del nue
 }
 
 const Page = () => {
+  
   const [data, setData] = useState(null);// Estado para almacenar los datos de categorías
   const [dataComida, setDataComida] = useState(null);// Estado para almacenar los datos de platillos
   const [selectedComida, setSelectedComida] = useState({
@@ -147,6 +165,17 @@ const Page = () => {
     update(dataEditar);
   };
 
+  const handleButtonClickEliminar = () => { //Lo que sucede al hacer click en el boton de aceptar de editar platillo
+    const dataEliminar = {
+      id: selectedComida.id
+    };
+    if (confirm('¿Esta seguro que quiere eliminar este platillo?')) {
+      
+      borrar(dataEliminar);
+    }
+    
+  };
+
   const handleButtonClickAgregar = () => { //lo que sucede al hacer click en el boton de aceptar de agregar platillo
     const dataAgregar = {
       nombre: newComida.nombre,
@@ -177,8 +206,7 @@ const Page = () => {
         <h1 className="font-bold text-3xl text-center mb-4 md:text-4xl">Editar Platillo</h1>
         <select 
           className="w-1/2 md:w-1/3 px-4 py-2 border border-black rounded-md text-xl text-center font-bold h-full"
-          onChange={handleSelectChangeComida}
-        >
+          onChange={handleSelectChangeComida}>
           {renderOptionsComidas()}
         </select>
         <textarea
@@ -194,13 +222,16 @@ const Page = () => {
           className="w-1/2 md:w-1/3 px-4 py-2 border border-black text-black rounded-sm mb-4"
           placeholder="Tiempo de preparación en min"
           value={selectedComida.tiempoPrep}
-          onChange={handleTiempoPrepChange}
-        />
+          onChange={handleTiempoPrepChange}/>
         <button
           className="border border-black rounded-md w-1/2 md:w-1/3 px-4 py-2 hover:text-white hover:bg-red-700 font-bold text-xl"
-          onClick={handleButtonClick}
-        >
-          Aceptar
+          onClick={handleButtonClick}>
+          Editar
+        </button>
+        <button
+          className="border border-black rounded-md w-1/2 md:w-1/3 px-4 py-2 hover:text-white hover:bg-red-700 font-bold text-xl"
+          onClick={handleButtonClickEliminar}>
+          Eliminar
         </button>
       </div>
       
@@ -209,8 +240,7 @@ const Page = () => {
         <select 
           id="Categorias-option1"
           className="w-1/2 md:w-1/3 px-4 py-2 border border-black rounded-md text-xl text-center font-bold h-full mb-4"
-          onChange={handleSelectChangeCategoria}
-        >
+          onChange={handleSelectChangeCategoria}>
           {renderOptionsCategorias()}
         </select>
         <div className="flex">
@@ -253,7 +283,7 @@ const Page = () => {
           className="border border-black rounded-md w-1/2 md:w-1/3 px-4 py-2 hover:text-white hover:bg-red-700 font-bold text-xl"
           onClick={handleButtonClickAgregar}
         >
-          Aceptar
+          Agregar
         </button>
       </div>
     </>
