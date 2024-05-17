@@ -4,14 +4,14 @@ import { Suspense } from 'react';
 import { fetchData } from '@/app/fetchData';
 import Link from 'next/link';
 
-const apiData = fetchData("http://127.0.0.1:8090/api/collections/categoria/records?page=1&perPage=30");
+const apiData = fetchData("http://127.0.0.1:8090/api/collections/categoria/records?page=1&perPage=30");//Lectura de la api
 
 const NewCategoria = () => {
-    const [data, setData] = useState(null);
+    const [data, setData] = useState(null);//estado de la data, se inicializa en nulo
 
     useEffect(() => {
         try {
-            const fetchedData = apiData.read();
+            const fetchedData = apiData.read();//se realiza el suspense y la promesa para obtener la informacion y se guarda en la variable
             if (fetchedData && fetchedData.items) {
                 setData(fetchedData.items);
             } else {
@@ -22,7 +22,7 @@ const NewCategoria = () => {
         }
     }, []);
 
-    const baseUrl = 'http://127.0.0.1:8090/api/files/categoria/';
+    const baseUrl = 'http://127.0.0.1:8090/api/files/categoria/';//url base de la api para la recuperaciond de las imagenes
 
     return (
         <div className="flex items-center justify-center flex-wrap max-w-screen-xl">
