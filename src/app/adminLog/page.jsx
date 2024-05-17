@@ -2,14 +2,16 @@
 import Footer from "../components/footer/Footer";
 import Navbar from "../components/navbar/Navbar";
 import ReCAPTCHA from "react-google-recaptcha";
-import { useRef, useState,useEffect } from "react";
+import { useRef, useState} from "react";
 import PocketBase from 'pocketbase';
 import { useRouter } from 'next/navigation';
 
-const pb = new PocketBase('http://127.0.0.1:8090');
+const pb = new PocketBase('http://127.0.0.1:8090'); //se crea un objeto de conexion a la base de datos
 var authData = "";
+//funcion asincrona que verifica que el usuario exista en la base de datos
 async function login(usuario,contrasena){
     try{
+        //guarda el resultado en una variable 
         authData = await pb.collection('users').authWithPassword(usuario, contrasena);
     }
     catch (e){
@@ -19,30 +21,32 @@ async function login(usuario,contrasena){
 }
 
 const page = () => {    
-    const router = useRouter();
+    
+    const router = useRouter(); 
     const [isCaptchaValid, setCaptchaValid] = useState(false);
     const captcha = useRef(null);
     
 
     const handleSubmit = (e) => {
-        e.preventDefault();
+        e.preventDefault(); // se evita que el form actualice la pagina.
 
         const username = e.target.username.value;
         const password = e.target.password.value;
         try{
-            login(username,password)
+            login(username,password) //llamada a la funcion login con los argumentos usuario y contraseña
            
         }
         catch (e) {
             alert("Ocurrio un error" + e);
         }
        
-        if (!username || !password || !isCaptchaValid) {
+        if (!username || !password || !isCaptchaValid) { //Si algun campo esta vacio se manda una alerta.
             alert("Por favor, verifica que has llenado todos los campos y completado el CAPTCHA.");
             return;
         }
 
-        if(pb.authStore.isValid){
+        if(pb.authStore.isValid){ //si el usuario está registrado en la base de datos, se redirige al 
+                                  //panel de administrador
             router.push('/adminRegister');
             
         }else{
@@ -50,12 +54,12 @@ const page = () => {
             console.log(authData);
             console.log(pb.authStore.isValid);
         }
-        // Aquí puedes agregar la lógica de envío, como una llamada a la API
+       
     };
 
     const onCaptchaChange = (value) => {
         //console.log("Captcha value:", value);
-        setCaptchaValid(!!value);
+        setCaptchaValid(!!value); //se actualiza el estado del captcha
     };
 
     return (

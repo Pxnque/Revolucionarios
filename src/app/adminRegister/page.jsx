@@ -3,21 +3,21 @@ import React, { useState, useEffect } from 'react';
 import { fetchData } from '@/app/fetchData';
 import PocketBase from 'pocketbase';
 
-const pb = new PocketBase('http://127.0.0.1:8090');
-
+const pb = new PocketBase('http://127.0.0.1:8090');//se crea un objeto de conexion a la base de datos
+//por medio de la api se manda a llamar el id y el nombre de la categoria de la tabla de categorias
 const apiData = fetchData("http://127.0.0.1:8090/api/collections/categoria/records?fields=id,nombreCat,expand.relField.name");
+//por medio de la api se manda a llamar el id, nombre, ingredientes y tiempo de preparacion de cada platillo de la tabla de comida. por pagina se llaman 200 platillos
 const apiDataComida = fetchData("http://127.0.0.1:8090/api/collections/comida/records?fields=id,nombre,ingredientes,tiempoPrep,expand.relField.name?page=1&perPage=200");
-var updateData =  "";
-var createData = "";
-async function update(data){
+var updateData =  ""; //variable que almacenara si se pudo editar el platillo
+var createData = ""; //variable que almacenara si se pudo crear el platillo
+async function update(data){ //funcion asyncrona que actualiza el platillo de la baser de datos
   try{
-    //console.log(data.id);
-    //console.log(data);
-    updateData = await pb.collection('comida').update(data.id, data);
-    if (updateData){
-      alert("Platillo agregado con exito")
-    }else{
-      alert("Hubo un problema al agregar el platillo")
+  
+    updateData = await pb.collection('comida').update(data.id, data); //actualiza el platillo, manda el id del platillo y su informacion
+    if (updateData){//si el platillo fue editado con exito mostrara una alerta de confirmacion
+      alert("Platillo agregado con exito");
+    }else{//si no se pudo editar mostrara la alerta de que hubo un problema
+      alert("Hubo un problema al agregar el platillo");
     }
   }
   catch (e){
@@ -26,14 +26,13 @@ async function update(data){
 
 }
 
-async function create(data){
+async function create(data){//funcion asyncrona que manda la informacion del nuevo platillo a la base de datos
   try{
-    //console.log(data.id);
-    //console.log(data);
-    createData = await pb.collection('comida').create(data);
-    if (createData){
+    
+    createData = await pb.collection('comida').create(data);//se guarda en la variable el resultado del .create
+    if (createData){//si el platillof fue agregado con exito mostrara una alerta de confirmacion
       alert("Platillo agregado con exito")
-    }else{
+    }else{//caso contrario
       alert("Hubo un problema al agregar el platillo")
     }
   }
@@ -44,26 +43,26 @@ async function create(data){
 }
 
 const Page = () => {
-  const [data, setData] = useState(null);
-  const [dataComida, setDataComida] = useState(null);
+  const [data, setData] = useState(null);// Estado para almacenar los datos de categorías
+  const [dataComida, setDataComida] = useState(null);// Estado para almacenar los datos de platillos
   const [selectedComida, setSelectedComida] = useState({
     id: '',
     nombre: '',
     ingredientes: '',
     tiempoPrep: ''
-  });
+  });// Estado para almacenar el platillo seleccionado
   const [newComida, setNewComida] = useState({
     nombre: '',
     ingredientes: '',
     tiempoPrep: ''
-  });
-  const [selectedCategoriaId, setSelectedCategoriaId] = useState('');
+  });// Estado para almacenar el nuevo platillo a agregar
+  const [selectedCategoriaId, setSelectedCategoriaId] = useState(''); // Estado para almacenar el id de la categoría seleccionada
 
   useEffect(() => {
     try {
-      const fetchedData = apiData.read();
+      const fetchedData = apiData.read(); // se manda la promesa y se leen los datos de la api
       if (fetchedData && fetchedData.items) {
-        setData(fetchedData.items);
+        setData(fetchedData.items);// Almacena los datos de categorías en el estado
       } else {
         console.error('Data is not in expected format:', fetchedData);
       }
@@ -74,7 +73,7 @@ const Page = () => {
     try {
       const fetchedDataComida = apiDataComida.read();
       if (fetchedDataComida && fetchedDataComida.items) {
-        setDataComida(fetchedDataComida.items);
+        setDataComida(fetchedDataComida.items);// Almacena los datos de platillos en el estado
       } else {
         console.error('Data is not in expected format:', fetchedDataComida);
       }
@@ -83,9 +82,9 @@ const Page = () => {
     }
   }, []);
 
-  const handleSelectChangeComida = (event) => {
+  const handleSelectChangeComida = (event) => { //se encarga de recuperar la informacion del platillo seleccionado en el select
     const selectedRecord = dataComida.find(record => record.nombre === event.target.value);
-    if (selectedRecord) {
+    if (selectedRecord) { //si lo encuentra, actualizar la informacion del estado de la comida seleccionada
       setSelectedComida({
         id: selectedRecord.id,
         nombre: selectedRecord.nombre,
@@ -95,28 +94,28 @@ const Page = () => {
     }
   };
 
-  const handleSelectChangeCategoria = (event) => {
+  const handleSelectChangeCategoria = (event) => { //funcion que maneja el cambio de estado del select de categoria 
     const selectedRecord = data.find(record => record.nombreCat === event.target.value);
-    if (selectedRecord) {
+    if (selectedRecord) { //si encuentra la categoria, actualiza el estado del selectedCategoriaId con el Id de la categoria seleccionada
       setSelectedCategoriaId(selectedRecord.id);
     }
   };
 
-  const handleIngredientesChange = (event) => {
+  const handleIngredientesChange = (event) => {//actualiza el valor de selectedComida.ingredientes del textArea de editar platillos
     setSelectedComida({
       ...selectedComida,
       ingredientes: event.target.value
     });
   };
 
-  const handleTiempoPrepChange = (event) => {
+  const handleTiempoPrepChange = (event) => {//actualiza el valor de selectedComida.tiempoPrep del input de editar platillos
     setSelectedComida({
       ...selectedComida,
       tiempoPrep: event.target.value
     });
   };
 
-  const handleNewIngredientesChange = (event) => {
+  const handleNewIngredientesChange = (event) => {//actualiza el valor de newComida.ingredientes del textArea de nuevo platillo
     setNewComida({
       ...newComida,
       ingredientes: event.target.value
@@ -130,43 +129,43 @@ const Page = () => {
     });
   };
 
-  const handleNombreChange = (event) => {
+  const handleNombreChange = (event) => {//actualiza el valor de newComida.nombre del input de agrega platillo
     setNewComida({
       ...newComida,
       nombre: event.target.value
     });
   };
 
-  const handleButtonClick = () => {
+  const handleButtonClick = () => { //Lo que sucede al hacer click en el boton de aceptar de editar platillo
     const dataEditar = {
       id: selectedComida.id,
 
       ingredientes: selectedComida.ingredientes,
       tiempoPrep: selectedComida.tiempoPrep
     };
-    //console.log(dataEditar);
+    
     update(dataEditar);
   };
 
-  const handleButtonClickAgregar = () => {
+  const handleButtonClickAgregar = () => { //lo que sucede al hacer click en el boton de aceptar de agregar platillo
     const dataAgregar = {
       nombre: newComida.nombre,
       ingredientes: newComida.ingredientes,
       tiempoPrep: newComida.tiempoPrep,
       idCategoria: selectedCategoriaId
     };
-    //console.log(dataAgregar);
+   
     create(dataAgregar);
-    // Llama a la función update o a cualquier otra función necesaria aquí
+    
   };
 
-  const renderOptionsCategorias = () => {
+  const renderOptionsCategorias = () => { //renderiza los nombres de las categorias en una etiqueta option
     return data?.map(record => (
       <option key={record.id} value={record.nombreCat}>{record.nombreCat}</option>
     ));
   };
 
-  const renderOptionsComidas = () => {
+  const renderOptionsComidas = () => {//renderiza los nombres de los platillos
     return dataComida?.map(record => (
       <option key={record.id} value={record.nombre}>{record.nombre}</option>
     ));

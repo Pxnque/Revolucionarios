@@ -5,7 +5,7 @@ import { fetchData } from '@/app/fetchData';
 import Link from 'next/link';
 
 
-
+//componente de prueba
 const Platillo2 = (props) => {
     const [data, setData] = useState(null);
     const apiData = fetchData(`http://127.0.0.1:8090/api/collections/comida/records?filter=idCategoria='${props.id}'&page=1&perPage=30`);

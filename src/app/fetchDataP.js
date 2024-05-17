@@ -11,7 +11,7 @@ const getSuspender = (promise) => {
       (err) => {
         status = "error";
         response = err;
-        console.log('Fetch error:', err);  // Log detailed error information
+        console.log('Fetch error:', err);  
       }
     );
   
@@ -35,11 +35,11 @@ const getSuspender = (promise) => {
             if (!response.ok) {
                 throw new Error('Network response was not ok: ' + response.statusText);
             }
-            return response.json();  // Ensures JSON parsing is attempted only after a successful response
+            return response.json();  
         })
         .catch(error => {
             console.error('Fetch error:', error);
-            throw error;  // Re-throw to ensure errors are propagated
+            throw error;  
         });
 
     return promise;
