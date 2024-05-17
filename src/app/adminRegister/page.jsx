@@ -16,7 +16,7 @@ async function update(data){ //funcion asyncrona que actualiza el platillo de la
   
     updateData = await pb.collection('comida').update(data.id, data); //actualiza el platillo, manda el id del platillo y su informacion
     if (updateData){//si el platillo fue editado con exito mostrara una alerta de confirmacion
-      alert("Platillo agregado con exito");
+      alert("Platillo editado con exito");
     }else{//si no se pudo editar mostrara la alerta de que hubo un problema
       alert("Hubo un problema al agregar el platillo");
     }
@@ -169,7 +169,7 @@ const Page = () => {
     const dataEliminar = {
       id: selectedComida.id
     };
-    if (confirm('¿Esta seguro que quiere eliminar este platillo?')) {
+    if (confirm('¿Esta seguro que quiere eliminar el platillo '+selectedComida.nombre+'?')) {
       
       borrar(dataEliminar);
     }

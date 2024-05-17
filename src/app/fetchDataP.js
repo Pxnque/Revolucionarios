@@ -14,7 +14,6 @@ const getSuspender = (promise) => {
         console.log('Fetch error:', err);  
       }
     );
-  
     const read = () => {
       switch (status) {
         case "pending":
@@ -28,8 +27,8 @@ const getSuspender = (promise) => {
   
     return { read };
   };
-  
-  export function fetchDataP(url) {
+  export function fetchDataP(url) { //a comparacion del fetchData, este archivo se encarga se recuperar la informacion de los platillos, a diferencia de las categorias
+    //este no usa suspense, simplemente usa promesas
     const promise = fetch(url)
         .then(response => {
             if (!response.ok) {

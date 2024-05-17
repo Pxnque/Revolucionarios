@@ -19,7 +19,6 @@ async function login(usuario,contrasena){
     }
     
 }
-
 const page = () => {    
     
     const router = useRouter(); 
@@ -56,7 +55,6 @@ const page = () => {
         }
        
     };
-
     const onCaptchaChange = (value) => {
         //console.log("Captcha value:", value);
         setCaptchaValid(!!value); //se actualiza el estado del captcha
