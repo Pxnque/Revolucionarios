@@ -17,7 +17,7 @@ const Navbar = () => {
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <a href="/" className="text-black text-2xl md:text-4xl lg:text-6xl transform transition duration-300 hover:scale-125">
-                Los Revolucionarios
+                Los Revolucionarioss
               </a>
             </div>
           </div>
