@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { FaFacebook } from "react-icons/fa";
 import { RiMapPin2Fill } from "react-icons/ri";
 import { PiPhoneFill } from "react-icons/pi";
-
+import ReactTooltip from 'react-tooltip';
 
 
 const Footer = () => {
@@ -105,7 +105,7 @@ const Footer = () => {
       <div className=" flex justify-center w-auto mx-auto border-t-2 border-black mb-4 mx-4">
         <ul className="grid grid-cols-3 w-full m-4">
         <li className="size-auto text-center flex justify-center items-center text-2xl font-bold hover:cursor-pointer">
-          <button className="transform transition duration-300 hover:scale-125">Nosotros</button>
+          <a className="transform transition duration-300 hover:scale-125" href="/nosotros">Nosotros</a>
         </li>
         <li className="size-auto flex justify-center">
         <Image src="/REVOLUCIONARIOS-LOGO.svg" alt="Logo" width={120} height={60}  className="md:w-120"/>
@@ -116,13 +116,19 @@ const Footer = () => {
       <div className="w-auto flex justify-center">
         <ul className="grid grid-cols-3">
           <li>
-          <PiPhoneFill className="size-10 m-2 transform transition duration-300 hover:scale-125"></PiPhoneFill>
+            <div>
+            <PiPhoneFill className="size-10 m-2 transform transition duration-300 hover:scale-125" />
+            </div>      
+      </li>
+          <li>
+            <a href="https://www.facebook.com/people/Los-Revolucionarios/100054510457204/" target="_blank" rel="noopener noreferrer">
+            <FaFacebook className="size-10 m-2 transform transition duration-300 hover:scale-125"></FaFacebook>
+            </a>
           </li>
           <li>
-          <FaFacebook className="size-10 m-2 transform transition duration-300 hover:scale-125"></FaFacebook>
-          </li>
-          <li>
+            <a href="https://www.google.com/maps/place/Los+Revolucionarios/@19.7299655,-101.2016482,17z/data=!3m1!4b1!4m6!3m5!1s0x842d0e50f1a29e01:0x4bbe2b4ae19dee80!8m2!3d19.7299655!4d-101.1990733!16s%2Fg%2F1pyckzst8?entry=ttu" target="_blank" rel="noopener noreferrer">
             <RiMapPin2Fill className="size-10 m-2 transform transition duration-300 hover:scale-125"></RiMapPin2Fill>
+            </a>
           </li>
         </ul>
         </div>    
