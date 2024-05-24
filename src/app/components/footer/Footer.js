@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { FaFacebook } from "react-icons/fa";
 import { RiMapPin2Fill } from "react-icons/ri";
 import { PiPhoneFill } from "react-icons/pi";
+import { Tooltip } from '@nextui-org/react';
 
 
 
@@ -110,13 +111,17 @@ const Footer = () => {
         <li className="size-auto flex justify-center">
         <Image src="/REVOLUCIONARIOS-LOGO.svg" alt="Logo" width={120} height={60}  className="md:w-120"/>
         </li>
-        <li className="size-auto text-center flex justify-center items-center text-2xl font-bold cursor-pointer transform transition duration-300 hover:scale-125">Aviso de privacidad</li>
+        <li className="size-auto text-center flex justify-center items-center text-2xl font-bold cursor-pointer">
+        <a className="transform transition duration-300 hover:scale-125" href="/avisoPrivacidad">Aviso de privacidad</a>
+        </li>
         </ul>
       </div>
       <div className="w-auto flex justify-center">
         <ul className="grid grid-cols-3">
           <li>
-          <PiPhoneFill className="size-10 m-2 transform transition duration-300 hover:scale-125"></PiPhoneFill>
+            <Tooltip content="343434343">
+            <PiPhoneFill className="size-10 m-2 transform transition duration-300 hover:scale-125"></PiPhoneFill>
+            </Tooltip>
           </li>
           <li>
           <FaFacebook className="size-10 m-2 transform transition duration-300 hover:scale-125"></FaFacebook>

@@ -54,7 +54,13 @@ import { useState, useEffect } from 'react';
 */
 const page = () => {
   return (
-        <div>
+        <div className="w-full h-screen">
+
+      
+
+        
+
+
           <div className="flex flex-col items-center justify-center my-4">
             <h1 className="font-bold text-3xl text-center mb-4 md:text-4xl">Editar Platillo</h1>
             <select className=" w-1/2 md:w-1/3 px-4 py-2 border border-black rounded-md text-xl text-center font-bold h-full">

@@ -5,6 +5,8 @@ import React, {useState} from "react";
 import {BsChevronCompactLeft,BsChevronCompactRight} from "react-icons/bs"
 import {RxDotFilled} from 'react-icons/rx'
 import Image from 'next/image';
+import { NextUIProvider, Tooltip } from '@nextui-org/react';
+
 
 const slides = [
 "/1714104245112.jpg",
@@ -84,6 +86,8 @@ export default function Home() {
 
 
     <Footer/>
+    
+ 
    </main>
 
   );

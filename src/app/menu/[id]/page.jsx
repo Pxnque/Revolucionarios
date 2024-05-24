@@ -38,13 +38,13 @@ export default function platilloId ({ params }){
             <Suspense fallback={<div>Loading...</div>}>
                 <ul className="flex items-center justify-center flex-wrap max-w-screen-xl">
                     {data?.map((item) => (
-                        <div className="container mx-auto px-4 md:mx-52">
+                        <div className="container mx-auto px-4 md:mx-52 justify-center items-center">
 
-                        <h1 className="text-xl text-red-800 font-bold md:text-3xl">{item.nombre}</h1>
+                        <h1 className="text-xl text-red-800 font-bold md:text-5xl">{item.nombre}</h1>
                 
-                        <p className="text-base md:text-2xl font-semibold">{item.ingredientes}</p>
-                        <p className="md:text-xl">{item.tiempoPrep}</p>
-                
+                        <p className="text-base md:text-3xl font-semibold">{item.ingredientes}</p>
+                        <p className="md:text-2xl">{item.tiempoPrep}</p>
+                        <div className="border border-black border-dashed w-full"/>
                     </div>
                     ))}
                 </ul>
