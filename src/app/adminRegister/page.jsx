@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState, useEffect } from 'react';
 import { fetchData } from '@/app/fetchData';
 import PocketBase from 'pocketbase';
@@ -9,38 +9,33 @@ const apiData = fetchData("http://127.0.0.1:8090/api/collections/categoria/recor
 const apiDataComida = fetchData("http://127.0.0.1:8090/api/collections/comida/records?fields=id,nombre,ingredientes,tiempoPrep,expand.relField.name?page=1&perPage=200");
 var updateData =  "";
 var createData = "";
+
 async function update(data){
   try{
-    //console.log(data.id);
-    //console.log(data);
     updateData = await pb.collection('comida').update(data.id, data);
     if (updateData){
-      alert("Platillo agregado con exito")
+      alert("Platillo actualizado con éxito");
     }else{
-      alert("Hubo un problema al agregar el platillo")
+      alert("Hubo un problema al actualizar el platillo");
     }
   }
   catch (e){
-      console.log(e)
+    console.log(e);
   }
-
 }
 
 async function create(data){
   try{
-    //console.log(data.id);
-    //console.log(data);
     createData = await pb.collection('comida').create(data);
     if (createData){
-      alert("Platillo agregado con exito")
+      alert("Platillo agregado con éxito");
     }else{
-      alert("Hubo un problema al agregar el platillo")
+      alert("Hubo un problema al agregar el platillo");
     }
   }
   catch (e){
-      console.log(e)
+    console.log(e);
   }
-
 }
 
 const Page = () => {
@@ -58,6 +53,8 @@ const Page = () => {
     tiempoPrep: ''
   });
   const [selectedCategoriaId, setSelectedCategoriaId] = useState('');
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [isFileLoading, setIsFileLoading] = useState(false);
 
   useEffect(() => {
     try {
@@ -140,11 +137,9 @@ const Page = () => {
   const handleButtonClick = () => {
     const dataEditar = {
       id: selectedComida.id,
-
       ingredientes: selectedComida.ingredientes,
       tiempoPrep: selectedComida.tiempoPrep
     };
-    //console.log(dataEditar);
     update(dataEditar);
   };
 
@@ -155,9 +150,7 @@ const Page = () => {
       tiempoPrep: newComida.tiempoPrep,
       idCategoria: selectedCategoriaId
     };
-    //console.log(dataAgregar);
     create(dataAgregar);
-    // Llama a la función update o a cualquier otra función necesaria aquí
   };
 
   const renderOptionsCategorias = () => {
@@ -170,6 +163,36 @@ const Page = () => {
     return dataComida?.map(record => (
       <option key={record.id} value={record.nombre}>{record.nombre}</option>
     ));
+  };
+
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
+
+  const handleUploadClick = async () => {
+    if (!selectedFile || !selectedCategoriaId) {
+      alert("Por favor, selecciona una imagen y una categoría.");
+      return;
+    }
+
+    setIsFileLoading(true);
+
+    try {
+      const formData = new FormData();
+      formData.append('imagen', selectedFile); 
+
+      const response = await pb.collection('categoria').update(selectedCategoriaId, formData);
+      if (response) {
+        alert("Imagen subida con éxito");
+      } else {
+        alert("Hubo un problema al subir la imagen");
+      }
+    } catch (error) {
+      console.error('Error uploading file:', error);
+      alert("Hubo un problema al subir la imagen");
+    } finally {
+      setIsFileLoading(false);
+    }
   };
 
   return (
@@ -204,7 +227,7 @@ const Page = () => {
           Aceptar
         </button>
       </div>
-      
+
       <div className="flex flex-col items-center justify-center my-4">
         <h1 className="font-bold text-3xl text-center mb-4 md:text-4xl w-full">Cambiar Imagen Categorias</h1>
         <select 
@@ -214,11 +237,21 @@ const Page = () => {
         >
           {renderOptionsCategorias()}
         </select>
-        <div className="flex">
+        <div className="flex flex-col items-center">
           <p className="font-semibold text-2xl px-4 py-2 mb-4">Imagen</p>
-          <button className="font-semibold text-4xl border border-black px-4 py-2 mb-4 text-center justify-center rounded-md">...</button>
+          <input 
+            type="file" 
+            onChange={handleFileChange} 
+            className="mb-4"
+          />
+          {isFileLoading && <p className="text-xl text-red-500">Cargando...</p>}
         </div>
-        <button className="border border-black rounded-md w-1/2 md:w-1/3 px-4 py-2 hover:text-white hover:bg-red-700 font-bold text-xl">Aceptar</button>
+        <button 
+          className="border border-black rounded-md w-1/2 md:w-1/3 px-4 py-2 hover:text-white hover:bg-red-700 font-bold text-xl"
+          onClick={handleUploadClick}
+        >
+          Aceptar
+        </button>
       </div>
 
       <div className="flex flex-col items-center justify-center my-4">
@@ -262,5 +295,3 @@ const Page = () => {
 };
 
 export default Page;
-
-
