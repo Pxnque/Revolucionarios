@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState, useEffect } from 'react';
 import { fetchData } from '@/app/fetchData';
 import PocketBase from 'pocketbase';
@@ -37,9 +37,8 @@ async function borrar(data){ //funcion asyncrona que actualiza el platillo de la
     }
   }
   catch (e){
-      console.log(e)
+    console.log(e);
   }
-
 }
 
 
@@ -54,9 +53,8 @@ async function create(data){//funcion asyncrona que manda la informacion del nue
     }
   }
   catch (e){
-      console.log(e)
+    console.log(e);
   }
-
 }
 
 const Page = () => {
@@ -73,8 +71,10 @@ const Page = () => {
     nombre: '',
     ingredientes: '',
     tiempoPrep: ''
-  });// Estado para almacenar el nuevo platillo a agregar
-  const [selectedCategoriaId, setSelectedCategoriaId] = useState(''); // Estado para almacenar el id de la categoría seleccionada
+  });
+  const [selectedCategoriaId, setSelectedCategoriaId] = useState('');
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [isFileLoading, setIsFileLoading] = useState(false);
 
   useEffect(() => {
     try {
@@ -157,7 +157,6 @@ const Page = () => {
   const handleButtonClick = () => { //Lo que sucede al hacer click en el boton de aceptar de editar platillo
     const dataEditar = {
       id: selectedComida.id,
-
       ingredientes: selectedComida.ingredientes,
       tiempoPrep: selectedComida.tiempoPrep
     };
@@ -200,6 +199,36 @@ const Page = () => {
     ));
   };
 
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
+
+  const handleUploadClick = async () => {
+    if (!selectedFile || !selectedCategoriaId) {
+      alert("Por favor, selecciona una imagen y una categoría.");
+      return;
+    }
+
+    setIsFileLoading(true);
+
+    try {
+      const formData = new FormData();
+      formData.append('imagen', selectedFile); 
+
+      const response = await pb.collection('categoria').update(selectedCategoriaId, formData);
+      if (response) {
+        alert("Imagen subida con éxito");
+      } else {
+        alert("Hubo un problema al subir la imagen");
+      }
+    } catch (error) {
+      console.error('Error uploading file:', error);
+      alert("Hubo un problema al subir la imagen");
+    } finally {
+      setIsFileLoading(false);
+    }
+  };
+
   return (
     <>
       <div className="flex flex-col items-center justify-center my-4">
@@ -234,7 +263,7 @@ const Page = () => {
           Eliminar
         </button>
       </div>
-      
+
       <div className="flex flex-col items-center justify-center my-4">
         <h1 className="font-bold text-3xl text-center mb-4 md:text-4xl w-full">Cambiar Imagen Categorias</h1>
         <select 
@@ -243,11 +272,21 @@ const Page = () => {
           onChange={handleSelectChangeCategoria}>
           {renderOptionsCategorias()}
         </select>
-        <div className="flex">
+        <div className="flex flex-col items-center">
           <p className="font-semibold text-2xl px-4 py-2 mb-4">Imagen</p>
-          <button className="font-semibold text-4xl border border-black px-4 py-2 mb-4 text-center justify-center rounded-md">...</button>
+          <input 
+            type="file" 
+            onChange={handleFileChange} 
+            className="mb-4"
+          />
+          {isFileLoading && <p className="text-xl text-red-500">Cargando...</p>}
         </div>
-        <button className="border border-black rounded-md w-1/2 md:w-1/3 px-4 py-2 hover:text-white hover:bg-red-700 font-bold text-xl">Aceptar</button>
+        <button 
+          className="border border-black rounded-md w-1/2 md:w-1/3 px-4 py-2 hover:text-white hover:bg-red-700 font-bold text-xl"
+          onClick={handleUploadClick}
+        >
+          Aceptar
+        </button>
       </div>
 
       <div className="flex flex-col items-center justify-center my-4">
@@ -291,5 +330,3 @@ const Page = () => {
 };
 
 export default Page;
-
-
