@@ -9,7 +9,7 @@ import Image from 'next/image';
 const slides = [
 "/1714104245112.jpg",
 "/1714104244442.jpg",
-"/1714104245112.jpg"
+"/1714104244779-min.jpg"
 ]
 
 
