@@ -41,7 +41,7 @@ const page = () => {
     </p>
     </div>
     <div className="md:w-4/6 flex items-center justify-center">
-    <Image src="/1714104245553.jpg" alt="imagen" width={280} height={180} className="md:w-4/6 md:m-12 rounded-md"></Image>
+    <Image src="/301188777_606289234531420_8639452717617020512_n.jpg" alt="imagen" width={280} height={180} className="md:w-4/6 md:m-12 rounded-md"></Image>
     </div>
     </div>
 
