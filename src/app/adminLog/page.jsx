@@ -6,7 +6,7 @@ import { useRef, useState} from "react";
 import PocketBase from 'pocketbase';
 import { useRouter } from 'next/navigation';
 
-const pb = new PocketBase('http://127.0.0.1:8090'); //se crea un objeto de conexion a la base de datos
+const pb = new PocketBase('https://revolucionarios.pockethost.io/'); //se crea un objeto de conexion a la base de datos
 var authData = "";
 //funcion asincrona que verifica que el usuario exista en la base de datos
 async function login(usuario,contrasena){
