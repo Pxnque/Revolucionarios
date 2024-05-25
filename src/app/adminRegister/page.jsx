@@ -3,11 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { fetchData } from '@/app/fetchData';
 import PocketBase from 'pocketbase';
 
-const pb = new PocketBase('http://127.0.0.1:8090');//se crea un objeto de conexion a la base de datos
+const pb = new PocketBase('https://revolucionarios.pockethost.io/');//se crea un objeto de conexion a la base de datos
 //por medio de la api se manda a llamar el id y el nombre de la categoria de la tabla de categorias
-const apiData = fetchData("http://127.0.0.1:8090/api/collections/categoria/records?fields=id,nombreCat,expand.relField.name");
+const apiData = fetchData("https://revolucionarios.pockethost.io/api/collections/categoria/records?fields=id,nombreCat,expand.relField.name");
 //por medio de la api se manda a llamar el id, nombre, ingredientes y tiempo de preparacion de cada platillo de la tabla de comida. por pagina se llaman 200 platillos
-const apiDataComida = fetchData("http://127.0.0.1:8090/api/collections/comida/records?fields=id,nombre,ingredientes,tiempoPrep,expand.relField.name?page=1&perPage=200");
+const apiDataComida = fetchData("https://revolucionarios.pockethost.io/api/collections/comida/records?fields=id,nombre,ingredientes,tiempoPrep,expand.relField.name?page=1&perPage=200");
 var updateData =  ""; //variable que almacenara si se pudo editar el platillo
 var createData = "";
 var deleteData = ""; //variable que almacenara si se pudo crear el platillo
