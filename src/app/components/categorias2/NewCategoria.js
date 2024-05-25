@@ -3,8 +3,11 @@ import React, { useEffect, useState } from 'react'
 import { Suspense } from 'react';
 import { fetchData } from '@/app/fetchData';
 import Link from 'next/link';
+import PocketBase from 'pocketbase';
 
-const apiData = fetchData("http://127.0.0.1:8090/api/collections/categoria/records?page=1&perPage=30");//Lectura de la api
+const url = 'https://revolucionarios.pockethost.io/'
+
+const apiData = fetchData("https://revolucionarios.pockethost.io//api/collections/categoria/records?page=1&perPage=30");//Lectura de la api
 
 const NewCategoria = () => {
     const [data, setData] = useState(null);//estado de la data, se inicializa en nulo
@@ -22,7 +25,7 @@ const NewCategoria = () => {
         }
     }, []);
 
-    const baseUrl = 'http://127.0.0.1:8090/api/files/categoria/';//url base de la api para la recuperaciond de las imagenes
+    const baseUrl = 'https://revolucionarios.pockethost.io/api/files/categoria/';//url base de la api para la recuperaciond de las imagenes
 
     return (
         <div className="flex items-center justify-center flex-wrap max-w-screen-xl">
