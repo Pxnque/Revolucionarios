@@ -34,7 +34,7 @@ const NewCategoria = () => {
                     {data?.map((item) => (
                         <Link href={`/menu/${item.id}`} key={item.id}>
                             <div className="h-56 w-36 bg-black rounded-md md:w-64 sm:w-48 sm:h-64 transform transition duration-300 hover:scale-110 m-4">
-                                <img src={`${baseUrl}${item.id}/${item.imagen}`} alt="imagen" className="w-full rounded-t-md h-5/6" />
+                                <Image src={`${baseUrl}${item.id}/${item.imagen}`} alt="imagen" className="w-full rounded-t-md h-5/6" />
                                 <h2 className="text-lg text-center p-1 text-white md:text-2xl">{item.nombreCat}</h2>
                             </div>
                         </Link>
