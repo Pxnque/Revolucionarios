@@ -7,7 +7,7 @@ import PocketBase from 'pocketbase';
 
 const url = 'https://revolucionarios.pockethost.io/'
 
-const apiData = fetchData("https://revolucionarios.pockethost.io//api/collections/categoria/records?page=1&perPage=30");//Lectura de la api
+const apiData = fetchData("https://revolucionarios.pockethost.io/api/collections/categoria/records?page=1&perPage=30");//Lectura de la api
 
 const NewCategoria = () => {
     const [data, setData] = useState(null);//estado de la data, se inicializa en nulo
