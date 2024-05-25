@@ -30,7 +30,7 @@ const Platillo2 = (props) => {
             <Suspense fallback={<div>Loading...</div>}>
                 <ul className="flex items-center justify-center flex-wrap max-w-screen-xl">
                     {data?.map((item) => (
-                        <div className="container mx-auto px-4 md:mx-52">
+                        <div key={item.id} className="container mx-auto px-4 md:mx-52">
 
                         <h1 className="text-red-800 font-bold md:text-3xl">{item.nombre}</h1>
                         <p className="text-base">{item.ingredientes}</p>

@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
 
+
 const Navbar = () => {
 
     const[isClick, setisClick] = useState(false);

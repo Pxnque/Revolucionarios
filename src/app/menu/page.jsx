@@ -5,6 +5,7 @@ import Footer from '../components/footer/Footer'
 import NewCategoria from '../components/Categorias2/NewCategoria'
 
 
+
 const page = () => {
  
 

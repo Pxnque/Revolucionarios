@@ -19,7 +19,7 @@ async function login(usuario,contrasena){
     }
     
 }
-const page = () => {    
+const Page = () => {    
     
     const router = useRouter(); 
     const [isCaptchaValid, setCaptchaValid] = useState(false);
@@ -91,4 +91,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default Page;
