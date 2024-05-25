@@ -2,7 +2,7 @@
 import React from 'react'
 import Navbar from '../components/navbar/Navbar'
 import Footer from '../components/footer/Footer'
-import NewCategoria from '../components/categorias2/NewCategoria'
+import NewCategoria from '../components/Categorias2/NewCategoria'
 
 
 const page = () => {
