@@ -8,7 +8,7 @@ import { fetchDataP } from "@/app/fetchDataP";
 export default function platilloId ({ params }){
     const [data, setData] = useState(null);
     const idComida = params.id;
-    const url = `http://127.0.0.1:8090/api/collections/comida/records?filter=idCategoria='${idComida}'`;
+    const url = `https://revolucionarios.pockethost.io/api/collections/comida/records?filter=idCategoria='${idComida}'`;
     
     useEffect(() => {//llama a la API para recuperar la informacion de los platillos
         fetchDataP(url)
