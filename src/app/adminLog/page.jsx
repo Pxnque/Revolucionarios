@@ -46,7 +46,7 @@ const Page = () => {
 
         if(pb.authStore.isValid){ //si el usuario está registrado en la base de datos, se redirige al 
                                   //panel de administrador
-            router.push('/adminRegister');
+            router.push('/aRegister');
             
         }else{
             alert("No se pudo iniciar sesion")

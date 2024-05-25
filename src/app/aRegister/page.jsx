@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { fetchData } from '@/app/fetchData';
 import PocketBase from 'pocketbase';
-
+//c
 const pb = new PocketBase('https://revolucionarios.pockethost.io/');//se crea un objeto de conexion a la base de datos
 //por medio de la api se manda a llamar el id y el nombre de la categoria de la tabla de categorias
 const apiData = fetchData("https://revolucionarios.pockethost.io/api/collections/categoria/records?fields=id,nombreCat,expand.relField.name");
