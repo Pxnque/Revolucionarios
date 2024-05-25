@@ -3,11 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { fetchData } from '@/app/fetchData';
 import PocketBase from 'pocketbase';
 
-const pb = new PocketBase('http://127.0.0.1:8090');//se crea un objeto de conexion a la base de datos
+const pb = new PocketBase('https://revolucionarios.pockethost.io/');//se crea un objeto de conexion a la base de datos
 //por medio de la api se manda a llamar el id y el nombre de la categoria de la tabla de categorias
-const apiData = fetchData("http://127.0.0.1:8090/api/collections/categoria/records?fields=id,nombreCat,expand.relField.name");
+const apiData = fetchData("https://revolucionarios.pockethost.io/api/collections/categoria/records?fields=id,nombreCat,expand.relField.name");
 //por medio de la api se manda a llamar el id, nombre, ingredientes y tiempo de preparacion de cada platillo de la tabla de comida. por pagina se llaman 200 platillos
-const apiDataComida = fetchData("http://127.0.0.1:8090/api/collections/comida/records?fields=id,nombre,ingredientes,tiempoPrep,expand.relField.name?page=1&perPage=200");
+const apiDataComida = fetchData("https://revolucionarios.pockethost.io/api/collections/comida/records?fields=id,nombre,ingredientes,tiempoPrep,expand.relField.name?page=1&perPage=200");
 var updateData =  ""; //variable que almacenara si se pudo editar el platillo
 var createData = "";
 var deleteData = ""; //variable que almacenara si se pudo crear el platillo
@@ -231,44 +231,73 @@ const Page = () => {
 
   return (
     <>
+    <nav className="bg-white m-2">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          <div className="flex items-center">
+            <div className="flex-shrink-0">
+              <a href="/" className="text-black text-2xl md:text-4xl lg:text-6xl transform transition duration-300 hover:scale-125">
+                Los Revolucionarios
+              </a>
+            </div>
+          </div>
+          <div className="hidden md:block">
+            <div className="ml-4 flex items-center space-x-4">
+            
+              <a
+                href="/adminLog"
+                className="text-black hover:bg-red-800 hover:text-white rounded-lg p-2 text-xl transform transition duration-300 hover:scale-125"
+              >
+                Cerrar sesión
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="w-auto border border-black mx-4"></div>  
+    </nav>
+    <div id='contenedor' className='grid grid-cols-3 gap-4 pt-16'>
+    <div className="">
       <div className="flex flex-col items-center justify-center my-4">
         <h1 className="font-bold text-3xl text-center mb-4 md:text-4xl">Editar Platillo</h1>
         <select 
-          className="w-1/2 md:w-1/3 px-4 py-2 border border-black rounded-md text-xl text-center font-bold h-full"
+          className="md:w-1/3 lg:w-3/4 px-4 py-2 border border-black rounded-md text-xl text-center font-bold h-full"
           onChange={handleSelectChangeComida}>
           {renderOptionsComidas()}
         </select>
         <textarea
           name=""
           id="areaEditar"
-          className="border border-black rounded-md m-4 w-1/2 md:w-1/3 px-4 py-2 text-xl"
+          className="border border-black rounded-md m-4 md:w-1/3 lg:w-3/4 px-4 py-2 text-xl"
           value={selectedComida.ingredientes}
           onChange={handleIngredientesChange}
         ></textarea>
         <input
           id="prepEditar"
           type="text"
-          className="w-1/2 md:w-1/3 px-4 py-2 border border-black text-black rounded-sm mb-4"
+          className="md:w-1/3 lg:w-3/4 px-4 py-2 border border-black text-black rounded-sm mb-4"
           placeholder="Tiempo de preparación en min"
           value={selectedComida.tiempoPrep}
           onChange={handleTiempoPrepChange}/>
         <button
-          className="border border-black rounded-md w-1/2 md:w-1/3 px-4 py-2 hover:text-white hover:bg-red-700 font-bold text-xl"
+          className="border border-black rounded-md md:w-1/3 lg:w-3/4 px-4 py-2 hover:text-white hover:bg-red-700 font-bold text-xl"
           onClick={handleButtonClick}>
           Editar
         </button>
+        <br />
         <button
-          className="border border-black rounded-md w-1/2 md:w-1/3 px-4 py-2 hover:text-white hover:bg-red-700 font-bold text-xl"
+          className="border border-black rounded-md md:w-1/3 lg:w-3/4 px-4 py-2 hover:text-white hover:bg-red-700 font-bold text-xl"
           onClick={handleButtonClickEliminar}>
           Eliminar
         </button>
+        </div>
       </div>
-
-      <div className="flex flex-col items-center justify-center my-4">
+      <div className=''>
+      <div className="flex flex-col items-center justify-center my-4 ">
         <h1 className="font-bold text-3xl text-center mb-4 md:text-4xl w-full">Cambiar Imagen Categorias</h1>
         <select 
           id="Categorias-option1"
-          className="w-1/2 md:w-1/3 px-4 py-2 border border-black rounded-md text-xl text-center font-bold h-full mb-4"
+          className="md:w-1/3 lg:w-3/4  px-4 py-2 border border-black rounded-md text-xl text-center font-bold h-full mb-4"
           onChange={handleSelectChangeCategoria}>
           {renderOptionsCategorias()}
         </select>
@@ -282,24 +311,24 @@ const Page = () => {
           {isFileLoading && <p className="text-xl text-red-500">Cargando...</p>}
         </div>
         <button 
-          className="border border-black rounded-md w-1/2 md:w-1/3 px-4 py-2 hover:text-white hover:bg-red-700 font-bold text-xl"
+          className="border border-black rounded-md md:w-1/3 lg:w-3/4 px-4 py-2 hover:text-white hover:bg-red-700 font-bold text-xl"
           onClick={handleUploadClick}
         >
           Aceptar
         </button>
       </div>
-
+      </div>
       <div className="flex flex-col items-center justify-center my-4">
         <h1 className="font-bold text-3xl text-center mb-4 md:text-4xl">Agregar Platillo</h1>
         <input
           type="text"
-          className="w-1/2 md:w-1/3 px-4 py-2 border border-black text-black rounded-sm mb-4"
+          className="md:w-1/3 lg:w-3/4 px-4 py-2 border border-black text-black rounded-sm mb-4"
           placeholder="Nombre"
           onChange={handleNombreChange}
         />
         <select 
           id="Categorias-option2"
-          className="w-1/2 md:w-1/3 px-4 py-2 border border-black rounded-md text-xl text-center font-bold h-full"
+          className="md:w-1/3 lg:w-3/4 px-4 py-2 border border-black rounded-md text-xl text-center font-bold h-full"
           onChange={handleSelectChangeCategoria}
         >
           {renderOptionsCategorias()}
@@ -307,24 +336,25 @@ const Page = () => {
         <textarea
           name=""
           id=""
-          className="border border-black rounded-md m-4 w-1/2 md:w-1/3 px-4 py-2 text-xl"
+          className="border border-black rounded-md m-4 md:w-1/3 lg:w-3/4 px-4 py-2 text-xl"
           value={newComida.ingredientes}
           onChange={handleNewIngredientesChange}
         ></textarea>
         <input
           type="text"
-          className="w-1/2 md:w-1/3 px-4 py-2 border border-black text-black rounded-sm mb-4"
+          className="md:w-1/3 lg:w-3/4 px-4 py-2 border border-black text-black rounded-sm mb-4"
           placeholder="Tiempo de preparación en min"
           value={newComida.tiempoPrep}
           onChange={handleNewTiempoPrepChange}
         />
         <button
-          className="border border-black rounded-md w-1/2 md:w-1/3 px-4 py-2 hover:text-white hover:bg-red-700 font-bold text-xl"
+          className="border border-black rounded-md md:w-1/3 lg:w-3/4 px-4 py-2 hover:text-white hover:bg-red-700 font-bold text-xl"
           onClick={handleButtonClickAgregar}
         >
           Agregar
         </button>
       </div>
+    </div>
     </>
   );
 };
