@@ -13,7 +13,7 @@ const Footer = () => {
       <div className=" flex justify-center w-auto mx-auto border-t-2 border-black mb-4 mx-4">
         <ul className="grid grid-cols-3 w-full m-4">
         <li className="size-auto text-center flex justify-center items-center text-2xl font-bold hover:cursor-pointer">
-          <button className="transform transition duration-300 hover:scale-125">Nosotros</button>
+        <a className="transform transition duration-300 hover:scale-125" href="/nosotros">Nosotros</a>
         </li>
         <li className="size-auto flex justify-center">
         <Image src="/REVOLUCIONARIOS-LOGO.svg" alt="Logo" width={120} height={60}  className="md:w-120"/>
@@ -32,10 +32,10 @@ const Footer = () => {
             </span>
           </li>
           <li>
-          <FaFacebook className="size-10 m-2 transform transition duration-300 hover:scale-125"></FaFacebook>
+          <a href="https://www.facebook.com/profile.php?id=100054510457204&locale=es_LA">  <FaFacebook className="size-10 m-2 transform transition duration-300 hover:scale-125">  </FaFacebook> </a>
           </li>
           <li>
-            <RiMapPin2Fill className="size-10 m-2 transform transition duration-300 hover:scale-125"></RiMapPin2Fill>
+          <a href="https://maps.app.goo.gl/sUtrrvqhshds8iYW6"><RiMapPin2Fill className="size-10 m-2 transform transition duration-300 hover:scale-125"> </RiMapPin2Fill></a>
           </li>
         </ul>
         </div>    
