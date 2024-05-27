@@ -49,6 +49,12 @@ const Navbar = () => {
             </div>
           </div>
           <div className="md:hidden flex items-center">
+          <a
+                href="/menu"
+                className="bg-red-800 text-white hover:bg-white hover:text-black border hover:border-black rounded-lg p-2 text-xl transform transition duration-300 hover:scale-125 "
+              >
+                Menú
+              </a>
             <button className="inline-flex items-center justify-center p-2 rounded-md text-black
             hover:text-black focus:outline-none focus:ring-2 focus:ring-inset focus:ring-black"
             onClick={toggleNavbar}>
@@ -80,7 +86,7 @@ const Navbar = () => {
                 }
             </button>
           </div>
-          
+         
         </div>
         <div className="w-auto border border-black mx-4"></div>
       </div>

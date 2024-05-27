@@ -42,15 +42,16 @@ export default function Home() {
         }}
  className="w-full h-full rounded-2xl bg-center bg-cover duration-500"> 
   
-  <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black text-white cursor-pointer bg-opacity-50 transform transition duration-300 hover:scale-125">
+  <div className="md:hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black text-white cursor-pointer bg-opacity-50 transform transition duration-300 hover:scale-125">
     <BsChevronCompactLeft size={30} onClick={prevSlide}/>
   </div>
-  <div className="hidden group-hover:block absolute top-[50%] left-[50%] -translate-x-0 translate-y-[-50%] text-sm rounded-md p-2 bg-black bg-opacity-50 text-white cursor-pointer  transform transition duration-300 hover:scale-125 md:text-2xl">
+  <div className="md:hidden group-hover:block absolute top-[50%] left-[50%] -translate-x-0 translate-y-[-50%] text-lg rounded-md p-2 bg-black bg-opacity-50 text-white cursor-pointer  transform transition duration-300 hover:scale-125 md:text-2xl">
   <a href="/menu">
   Menú
 </a>
   </div>
-  <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black bg-opacity-50 text-white cursor-pointer transform transition duration-300 hover:scale-125">
+  <div className="md:hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black bg-opacity-50 text-white cursor-pointer transform transition duration-300 hover:scale-125">
+   
     <BsChevronCompactRight size={30} onClick={nextSlide}/>
   </div>
     </div>
