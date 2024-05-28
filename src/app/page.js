@@ -36,7 +36,7 @@ export default function Home() {
   return (
    <main className="">
     <Navbar/>
-    <div className="max-w-[1200px] h-[480px] m-auto py-4 px-4 relative group">
+    <div className="max-w-[1200px] h-[240px] md:max-w-[1200px] md:h-[480px] m-auto py-4 px-4 relative group">
       <div style={{ 
           backgroundImage: `url(${slides[currentSlide]})`, // Aquí se usa la sintaxis de template strings
         }}
@@ -45,7 +45,7 @@ export default function Home() {
   <div className="md:hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black text-white cursor-pointer bg-opacity-50 transform transition duration-300 hover:scale-125">
     <BsChevronCompactLeft size={30} onClick={prevSlide}/>
   </div>
-  <div className="md:hidden group-hover:block absolute top-[50%] left-[50%] -translate-x-0 translate-y-[-50%] text-lg rounded-md p-2 bg-black bg-opacity-50 text-white cursor-pointer  transform transition duration-300 hover:scale-125 md:text-2xl">
+  <div className="md:hidden group-hover:block absolute top-[50%] left-[45%] -translate-x-0 translate-y-[-50%] md:top-[50%] md:left-[50%]-translate-x-0 md:translate-y-[-50%] text-lg rounded-md p-2 bg-black bg-opacity-50 text-white cursor-pointer  transform transition duration-300 hover:scale-125 md:text-2xl">
   <a href="/menu">
   Menú
 </a>
